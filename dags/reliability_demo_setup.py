@@ -1,13 +1,12 @@
 """
-Setup DAG for the four reliability-pattern demos.
+Create and seed the tables used by the reliability-pattern examples.
 
-Creates the demo tables in your warehouse and seeds them in one of two scenarios:
+Choose one of two scenarios when manually triggering the DAG:
 
-* healthy - every gate passes and every DAG goes green
-* broken  - every gate trips, the same way the job-title classifier incident did
+* healthy - seeds data that passes the example checks
+* broken  - seeds data that demonstrates each failure condition
 
-Trigger it manually, choose a scenario, then run the layer 2-5 DAGs.
-Re-running it resets every demo table, so you can switch scenarios live.
+Each run recreates the demo tables before loading the selected dataset.
 """
 
 import os
@@ -159,7 +158,7 @@ def _seed_statements(scenario: str) -> list[str]:
         "scenario": Param(
             "healthy",
             enum=["healthy", "broken"],
-            description="healthy: every gate passes. broken: every gate trips.",
+            description="Choose data that passes or demonstrates the checks.",
         )
     },
     doc_md=__doc__,

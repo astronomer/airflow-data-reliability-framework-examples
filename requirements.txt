@@ -1,4 +1,4 @@
 # Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
 apache-airflow-providers-snowflake
 apache-airflow-providers-common-ai>=0.9.0
-pydantic-ai-slim[typesafe]
+pydantic-ai-slim[openai]
